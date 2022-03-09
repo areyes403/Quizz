@@ -13,6 +13,6 @@ struct Pregunta{
     
     init(t:String, r:String){
         texto=t
-        respuesta=t
+        respuesta=r
     }
 }

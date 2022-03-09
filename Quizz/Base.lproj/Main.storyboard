@@ -23,38 +23,44 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HRm-Ip-3Q9">
                                 <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzv-y8-h6i">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="86"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los arboles generan oxigeno?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgi-yU-AgY">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="568"/>
+                                        <rect key="frame" x="0.0" y="106" width="374" height="482"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MU-uM-uZi">
-                                        <rect key="frame" x="0.0" y="588" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="608" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Zhb-VR-GZS"/>
                                         </constraints>
-                                        <state key="normal" title="Verdadero"/>
+                                        <state key="normal" title="VERDADERO"/>
                                         <connections>
                                             <action selector="btnAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1jy-GH-H3h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOO-Tc-NSo">
-                                        <rect key="frame" x="0.0" y="658" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="678" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XTo-4w-8tL"/>
                                         </constraints>
-                                        <state key="normal" title="Falso"/>
+                                        <state key="normal" title="FALSO"/>
                                         <connections>
                                             <action selector="btnAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6xg-0E-qfb"/>
                                         </connections>
                                     </button>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5lE-mn-VBa">
-                                        <rect key="frame" x="0.0" y="728" width="374" height="50"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="5lE-mn-VBa">
+                                        <rect key="frame" x="0.0" y="748" width="374" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="RfL-xT-rmG"/>
+                                            <constraint firstAttribute="height" constant="30" id="kqo-HA-Nu4"/>
                                         </constraints>
                                     </progressView>
                                 </subviews>
@@ -77,6 +83,7 @@
                         <outlet property="btnFalse" destination="KOO-Tc-NSo" id="HWu-aR-xpi"/>
                         <outlet property="btnTrue" destination="1MU-uM-uZi" id="anZ-R7-cg1"/>
                         <outlet property="lblPregunta" destination="fgi-yU-AgY" id="AgF-ac-amb"/>
+                        <outlet property="lblPuntuaje" destination="yzv-y8-h6i" id="S1g-KK-umF"/>
                         <outlet property="progressBar" destination="5lE-mn-VBa" id="qXO-Ve-0SY"/>
                     </connections>
                 </viewController>

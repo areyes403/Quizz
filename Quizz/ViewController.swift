@@ -9,6 +9,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnFalse: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     var numPregunta=0
+    @IBOutlet weak var lblPuntuaje: UILabel!
+    var puntuaje=0
     /*
     let preguntas=[
         ["Hola como estas?","VERDADERO"],
@@ -29,11 +31,13 @@ class ViewController: UIViewController {
         Pregunta(t: "Microsoft es una de las empresas mas valuadas del mundo", r: "VERDADERO"),
     ]
     
+    let progress = Progress (totalUnitCount: 10)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         cambiarPregunta()
+        
     }
 
    
@@ -42,11 +46,15 @@ class ViewController: UIViewController {
         //print("Boton presionado: \(sender.currentTitle)")
         let answerUser = sender.currentTitle
         let correctAnswer = preguntas[numPregunta].respuesta
-        print(answerUser as Any)
+        print(answerUser)
+        print(correctAnswer)
+        
         
         if answerUser == correctAnswer{
             print("Respuesta correcta :v")
             sender.backgroundColor=UIColor.green
+            puntuaje += 10
+            print("El puntuaje obtenido: " + String(puntuaje))
         }else{
             print("Mal xC")
             sender.backgroundColor=UIColor.red
@@ -57,12 +65,21 @@ class ViewController: UIViewController {
             //lblPregunta.text=preguntas[numPregunta][0]
             //cambiarRespuesta()
             numPregunta += 1
+            //bar()
+            progressBar.progress += 0.1
+            
         }else{
             numPregunta=0
         }
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(cambiarPregunta), userInfo: nil, repeats: false)
         
+        
+    }
+    
+    func bar(){
+        self.progressBar.progress += 0.1;
+        progressBar.setProgress(Float(numPregunta)/10, animated: true)
         
     }
     
