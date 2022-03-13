@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblPuntuaje: UILabel!
     var puntuaje=0
     var bar=0.1 as Float
-    let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
+    let alert = UIAlertController(title: "Juego Finalizado", message: "Desea jugar otra ves?", preferredStyle: UIAlertController.Style.alert)
     
     /*
     let preguntas=[
@@ -40,9 +40,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cambiarPregunta()
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        
+        alert.addAction(UIAlertAction(title: "Si, jugar de nuevo", style: UIAlertAction.Style.default, handler: { action in
 
-    }
+            self.numPregunta =  0
+            self.bar = 0.1
+            self.puntuaje = 0
+            self.cambiarPregunta()
+            self.progressBar.setProgress(self.bar, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Salir", style: UIAlertAction.Style.destructive, handler: { action in
+            exit(0)
+        }))    }
 
    
     
@@ -51,13 +61,13 @@ class ViewController: UIViewController {
         let correctAnswer = preguntas[numPregunta].respuesta
         
         if answerUser == correctAnswer{
-            print("Respuesta correcta :v")
+            //print("Respuesta correcta :v")
             sender.backgroundColor=UIColor.green
             puntuaje += 10
-            print("El puntuaje obtenido: " + String(puntuaje))
+            //print("El puntuaje obtenido: " + String(puntuaje))
             self.lblPuntuaje.text=" Puntuaje obtenido: " + String(puntuaje)
         }else{
-            print("Mal xC")
+            //print("Mal xC")
             sender.backgroundColor=UIColor.red
             
         }
@@ -69,8 +79,15 @@ class ViewController: UIViewController {
             }
             bar += 0.1
         }else{
-            numPregunta=0
+            
+            
+            alert.message="""
+                            Puntuaje obtenido \(self.puntuaje)
+                            Desea jugar otra vez?
+                            """
+            
             self.present(alert, animated: true, completion: nil)
+            
             
         }
         
