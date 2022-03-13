@@ -11,6 +11,9 @@ class ViewController: UIViewController {
     var numPregunta=0
     @IBOutlet weak var lblPuntuaje: UILabel!
     var puntuaje=0
+    var bar=0.1 as Float
+    let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
+    
     /*
     let preguntas=[
         ["Hola como estas?","VERDADERO"],
@@ -37,24 +40,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cambiarPregunta()
-        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
     }
 
    
     
     @IBAction func btnAnswer(_ sender: UIButton) {
-        //print("Boton presionado: \(sender.currentTitle)")
         let answerUser = sender.currentTitle
         let correctAnswer = preguntas[numPregunta].respuesta
-        print(answerUser)
-        print(correctAnswer)
-        
         
         if answerUser == correctAnswer{
             print("Respuesta correcta :v")
             sender.backgroundColor=UIColor.green
             puntuaje += 10
             print("El puntuaje obtenido: " + String(puntuaje))
+            self.lblPuntuaje.text=" Puntuaje obtenido: " + String(puntuaje)
         }else{
             print("Mal xC")
             sender.backgroundColor=UIColor.red
@@ -62,32 +63,26 @@ class ViewController: UIViewController {
         }
         
         if numPregunta < preguntas.count - 1 {
-            //lblPregunta.text=preguntas[numPregunta][0]
-            //cambiarRespuesta()
             numPregunta += 1
-            //bar()
-            progressBar.progress += 0.1
-            
+            DispatchQueue.main.async {  // To update UI
+                self.progressBar.setProgress(self.bar, animated: true)
+            }
+            bar += 0.1
         }else{
             numPregunta=0
+            self.present(alert, animated: true, completion: nil)
+            
         }
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(cambiarPregunta), userInfo: nil, repeats: false)
-        
-        
     }
-    
-    func bar(){
-        self.progressBar.progress += 0.1;
-        progressBar.setProgress(Float(numPregunta)/10, animated: true)
-        
-    }
+
     
     @objc func cambiarPregunta(){
         lblPregunta.text = preguntas[numPregunta].texto
         btnTrue.backgroundColor=UIColor.white
         btnFalse.backgroundColor=UIColor.white
-        progressBar.progress = Float((numPregunta+1) / preguntas.count)
+        
     }
 
 }
